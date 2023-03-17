@@ -14,6 +14,7 @@ library(rpart.plot)  # plotting regression trees
 library(ipred)       # bagging
 library(caret)       # bagging
 library(randomForest)
+library(e1071)       # naiveBayes
 ```
 
 ## 1 - Conjuntos de entrenamiento y pruebas pasadas
@@ -185,6 +186,14 @@ test_set <- clean_data[-partition,]
 
 ## 2 - Modelo de regresión usando bayes ingenuo
 
+``` {r}
+model_naive_bayes <- naiveBayes(salePrice~., data=train_set)
+
+pred_bayes <- predict(model_naive_bayes, newdata=test_set)
+
+table_confusion <- table(pred_bayes, test_set$salePrice)
+print(table_confusion)
+```
 
 ## 3 - Modelo de clasificacion, variable categórica que hizo con el precio de las casas (barata, media y cara)
 
