@@ -197,9 +197,26 @@ print(table_confusion)
 
 ## 3 - Modelo de clasificacion, variable categórica que hizo con el precio de las casas (barata, media y cara)
 
+Volviendo a usar la variable categorica
+```{r}
+test_set$economy <- ifelse(test_set$salePrice < 163000, "Economic", ifelse(test_set$salePrice >= 163000 & test_set$salePrice <= 214000, "Average", "Expensive"))
+train_set$economy <- ifelse(train_set$salePrice < 163000, "Economic", ifelse(train_set$salePrice >= 163000 & train_set$salePrice <= 214000, "Average", "Expensive"))
+```
+
+Implementar modelo de clasificacion
+``` {r}
+model_clasification <- rpart(economy ~ ., data = train_set, method = "class")
+predictions_clasification <- predictions <- predict(model_clasification, newdata = test_set, type = "class")
+confusion_matrix_clasification <- table(predictions_clasification, test_set$economy)
+accuracy_clasification <- sum(diag(confusion_matrix_clasification)) / sum(confusion_matrix_clasification)
+print(accuracy_clasification)
+```
 
 ## 4 - Utilizar los modelos con el conjunto de prueba y determine la eficiencia del algoritmo
 
+``` {r}
+
+```
 
 ## 5 - Analizar los resultados del modelo de regresión
 
