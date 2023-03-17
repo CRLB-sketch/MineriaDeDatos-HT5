@@ -5,3 +5,29 @@ date: "2023-03-17"
 
 # Hoja de Trabajo 05 - Naive Bayes
 
+## 1 - Conjuntos de entrenamiento y prueba pasadas
+
+
+## 2 - Modelo de regresión usando bayes ingenuo
+
+
+## 3 - Modelo de clasificacion, variable categórica que hizo con el precio de las casas (barata, media y cara)
+
+## 4 - Utilizar los modelos con el conjunto de prueba y determine la eficiencia del algoritmo
+
+## 5 - Analizar los resultados del modelo de regresión
+
+## 6 - Comprar resultados del modelo de regresión lineal y el árbol de regresió
+
+
+## 7 - Realizar análisis de la eficiencia del modelo de clasificación usando una matriz de confusión.
+
+
+## 8 - Analizar el modelo ¿cree que pueda estar sobre ajustado?
+
+
+## 9 - Haga un modelo usando validación cruzada
+
+
+## 10 - Compare la eficiencia del algoritmo dcon el resultado obtenido con el árbol de decisión
+
