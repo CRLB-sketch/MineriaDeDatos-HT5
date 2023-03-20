@@ -250,10 +250,30 @@ Para el modelo de regresión se obtuvo para un error absoluto de `r abs_error_4_
 
 
 
-## 6 - Comprar resultados del modelo de regresión lineal y el árbol de regresió
+## 6 - Comprar resultados del modelo de regresión lineal y el árbol de regresión
+
+
+```{r}
+colnames(test_set)
+```
+
 
 
 ## 7 - Realizar análisis de la eficiencia del modelo de clasificación usando una matriz de confusión.
+```{r}
+train_prediction <- predict(model_clasification, newdata = train_set)
+test_prediction <- predict(model_clasification, newdata = test_set)
+```
+
+### Matriz de confusión para set de entrenamiento
+```{r}
+confusionMatrix(train_prediction, as.factor(train_set$economy))
+```
+### Matriz de confusión para set de prueba
+```{r}
+confusionMatrix(test_prediction, as.factor(test_set$economy))
+```
+
 
 
 ## 8 - Analizar el modelo ¿cree que pueda estar sobre ajustado?
@@ -270,7 +290,6 @@ confusionMatrix(train_prediction, as.factor(train_set$economy))
 ### Matriz de confusión para set de prueba
 ```{r}
 confusionMatrix(test_prediction, as.factor(test_set$economy))
-
 ```
 
 La accuracy del modelo en el set de prueba es de 0.697 y de 0.73 para el set de entrenamiento. No es mucha la diferencia entre los dos conjuntos de datos. Por lo que podemos descartar que el modelo tenga sobre ajuste.
