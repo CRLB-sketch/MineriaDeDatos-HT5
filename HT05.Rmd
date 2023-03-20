@@ -223,11 +223,11 @@ Se obtuvo 1 de presicion, el cual indica que la clasificación es eficiente
 ## 4 - Utilizar los modelos con el conjunto de prueba y determine la eficiencia del algoritmo
 
 ``` {r}
-y4 <- test_set[,c("salePrice")]
-y_pred_4 <- predict(model_clasification, newdata = test_set)
-rmse_model_4 <- RMSE(pred = y_pred_4, obs = test_set$salePrice)
-abs_error_4 <- abs(mean(y_pred_4 - test_set$salePrice))
-mean_error_4 <- mean(y4 - y_pred_4)
+y4_reg <- test_set[,c("salePrice")]
+y_pred_4_reg <- predict(model_naive_bayes, newdata = test_set)
+rmse_model_4_reg <- RMSE(pred = y_pred_4_reg, obs = test_set$salePrice)
+abs_error_4_reg <- abs(mean(y_pred_4_reg - test_set$salePrice))
+mean_error_4_reg <- mean(y4_reg - y_pred_4_reg)
 print(mean_error_4)
 ```
 
