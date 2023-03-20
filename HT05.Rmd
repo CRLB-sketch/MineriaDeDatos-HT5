@@ -227,18 +227,27 @@ Se obtuvo 1 de presicion, el cual indica que la clasificación es eficiente
 
 ``` {r}
 clean_test = na.omit(test_set)
-y4_reg <- clean_test[,c("salePrice")]
-y_pred_4_reg <- predict(model_naive_bayes, newdata = clean_test)
-y_pred_4_reg <- as.numeric(y_pred_4_reg)
-rmse_model_4_reg <- RMSE(pred = y_pred_4_reg, obs = clean_test$salePrice)
-abs_error_4_reg <- abs(mean(y_pred_4_reg - clean_test$salePrice))
-mean_error_4_reg <- mean(y4_reg - y_pred_4_reg)
-print(mean_error_4_reg)
-```
 
-Se obtuvo una eficiencia de "182735.3".
+y4_cl <- clean_test[,c("economy")]
+y4_cl <- as.numeric(as.factor(y4_cl))
+y_pred_4_cl <- predict(model_clasification, newdata = clean_test)
+y_pred_4_cl <- as.numeric(as.factor(y_pred_4_cl))
+y4_mean_cl <- mean(y4_cl, na.rm = TRUE)
+y_pred_4_mean_cl <- mean(y_pred_4_cl, na.rm = TRUE)
+difference_cl <- abs(y4_mean_cl - y_pred_4_mean_cl)
+```
+Para el modelo de clasificación se obtuvo una diferencia de `r difference_cl` entre el promedio de conjuntos de valores reales y predichos lo cual es bastante bajo lo que significa que la predicción se acerca bastante a los valores reales.
+
 
 ## 5 - Analizar los resultados del modelo de regresión
+```{r}
+y4_reg <- clean_test[,c("salePrice")]
+y_pred_4_reg <- predict(model_naive_bayes, clean_test)
+y_pred_4_reg <- as.numeric(y_pred_4_reg)
+abs_error_4_reg <- abs(mean(y_pred_4_reg - clean_test$salePrice))
+```
+Para el modelo de regresión se obtuvo para un error absoluto de `r abs_error_4_reg`.
+
 
 
 ## 6 - Comprar resultados del modelo de regresión lineal y el árbol de regresió
