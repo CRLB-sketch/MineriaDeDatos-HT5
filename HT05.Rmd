@@ -192,13 +192,14 @@ colnames(test_set)
 ``` {r}
 model_naive_bayes <- naiveBayes(salePrice~., data=train_set)
 
-pred_bayes <- predict(model_naive_bayes, newdata=test_set[-21])
+pred_bayes <- predict(model_naive_bayes, newdata=test_set[,-21])
 pred_bayes <- as.numeric(as.character(pred_bayes))
 plot(test_set$salePrice, col="red")
 points(pred_bayes, col="green")
 
 EMA <- mean(test_set$salePrice-pred_bayes, na.rm = T)
 ```
+Se obtuvo un de: `r EMA`, para el error medio absoluto. Además los valores de predicción se ven bastante apegados a los valores reales.
 
 ## 3 - Modelo de clasificacion, variable categórica que hizo con el precio de las casas (barata, media y cara)
 
