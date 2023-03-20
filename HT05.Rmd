@@ -245,12 +245,34 @@ Se obtuvo una eficiencia de "182735.3".
 ## 8 - Analizar el modelo ¿cree que pueda estar sobre ajustado?
 
 ```{r}
+train_prediction <- predict(model_clasification, newdata = train_set)
+test_prediction <- predict(model_clasification, newdata = test_set)
+```
+
+### Matriz de confusión para set de entrenamiento
+```{r}
+confusionMatrix(train_prediction, as.factor(train_set$economy))
+```
+### Matriz de confusión para set de prueba
+```{r}
+confusionMatrix(test_prediction, as.factor(test_set$economy))
 
 ```
 
+La accuracy del modelo en el set de prueba es de 0.697 y de 0.73 para el set de entrenamiento. No es mucha la diferencia entre los dos conjuntos de datos. Por lo que podemos descartar que el modelo tenga sobre ajuste.
 
 ## 9 - Haga un modelo usando validación cruzada
 
+```{r}
+fit_control <- trainControl(method = "cv", number = 2)
+cross_model <- train(economy ~ ., data = na.omit(train_set), method = "nb", trControl = fit_control)
+```
+Realizando predicciones
+```{r}
+predictions_cross_model <-  predict(cross_model, newdata = test_set)
+confusionMatrix(predictions_cross_model, as.factor(na.omit(test_set)$economy))
+```
 
-## 10 - Compare la eficiencia del algoritmo dcon el resultado obtenido con el árbol de decisión
+## 10 - Compare la eficiencia del algoritmo con el resultado obtenido con el árbol de decisión (el de clasificación) y el modelo de random forest que hizo en la hoja pasada. ¿Cuál es mejor para predecir? ¿Cuál se demoró más en procesar?
 
+Tomando en cuenta la matriz de confusión, tenemos una exactitud de 0.8775, mientras que para la hoja anterior utilizando el método de Random Forest se tuvo 0.849. Por lo que este algoritmo es más eficiente para clasificar los valores. Sin embargo, el costo es el tiempo que utiliza dado que con Random Forest el modelo se entrenó más rápido.
