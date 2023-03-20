@@ -2,6 +2,9 @@
 title: "HT05"
 date: "2023-03-17"
 ---
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
 
 # Hoja de Trabajo 05 - Naive Bayes
 
@@ -223,12 +226,14 @@ Se obtuvo 1 de presicion, el cual indica que la clasificación es eficiente
 ## 4 - Utilizar los modelos con el conjunto de prueba y determine la eficiencia del algoritmo
 
 ``` {r}
-y4_reg <- test_set[,c("salePrice")]
-y_pred_4_reg <- predict(model_naive_bayes, newdata = test_set)
-rmse_model_4_reg <- RMSE(pred = y_pred_4_reg, obs = test_set$salePrice)
-abs_error_4_reg <- abs(mean(y_pred_4_reg - test_set$salePrice))
+clean_test = na.omit(test_set)
+y4_reg <- clean_test[,c("salePrice")]
+y_pred_4_reg <- predict(model_naive_bayes, newdata = clean_test)
+y_pred_4_reg <- as.numeric(y_pred_4_reg)
+rmse_model_4_reg <- RMSE(pred = y_pred_4_reg, obs = clean_test$salePrice)
+abs_error_4_reg <- abs(mean(y_pred_4_reg - clean_test$salePrice))
 mean_error_4_reg <- mean(y4_reg - y_pred_4_reg)
-print(mean_error_4)
+print(mean_error_4_reg)
 ```
 
 Se obtuvo una eficiencia de "182735.3".
