@@ -252,6 +252,8 @@ Para el modelo de regresión se obtuvo para un error absoluto de `r abs_error_4_
 
 ## 6 - Comprar resultados del modelo de regresión lineal y el árbol de regresión
 
+En base a los resultados de hojas de trabajo anteriores sabemos que el modelo de regresión lineal multivariable funcionó mejor, esto porque el r^2 era de 0.8231 lo que significa que el modelo se adapta bastante bien a la data mientras que con el árbol de regresión lineal se obtuvo un error absoluto de 1314.3656456, un RMSE de 4.5178048^{4} y en promedio hubo un error de USD 3040. Sin embargo, no se puede decir lo mismo del modelo univariable ya que se obtuvo un valor para r^2 de 0.5200 y no es un valor aceptable para poder hacer predicciones ya que no devuelve valores tan exactos.
+
 
 
 ## 7 - Realizar análisis de la eficiencia del modelo de clasificación usando una matriz de confusión.
