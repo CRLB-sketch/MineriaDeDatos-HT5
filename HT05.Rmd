@@ -210,7 +210,7 @@ train_set$economy <- ifelse(train_set$salePrice < 163000, "Economic", ifelse(tra
 
 Implementar modelo de clasificacion
 ``` {r}
-model_clasification <- rpart(economy ~ ., data = train_set, method = "class")
+model_clasification <- naiveBayes(economy ~ ., data = train_set)
 predictions_clasification <- predictions <- predict(model_clasification, newdata = test_set, type = "class")
 confusion_matrix_clasification <- table(predictions_clasification, test_set$economy)
 accuracy_clasification <- sum(diag(confusion_matrix_clasification)) / sum(confusion_matrix_clasification)
@@ -242,6 +242,10 @@ Se obtuvo una eficiencia de "182735.3".
 
 
 ## 8 - Analizar el modelo ¿cree que pueda estar sobre ajustado?
+
+```{r}
+
+```
 
 
 ## 9 - Haga un modelo usando validación cruzada
