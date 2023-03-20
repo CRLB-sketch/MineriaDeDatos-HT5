@@ -221,7 +221,7 @@ accuracy_clasification <- sum(diag(confusion_matrix_clasification)) / sum(confus
 print(accuracy_clasification)
 ```
 
-Se obtuvo 1 de presicion, el cual indica que la clasificación es eficiente
+Se obtuvo `r accuracy_clasification` de presicion, el cual indica que la clasificación es eficiente.
 
 ## 4 - Utilizar los modelos con el conjunto de prueba y determine la eficiencia del algoritmo
 
@@ -253,11 +253,6 @@ Para el modelo de regresión se obtuvo para un error absoluto de `r abs_error_4_
 ## 6 - Comprar resultados del modelo de regresión lineal y el árbol de regresión
 
 
-```{r}
-colnames(test_set)
-```
-
-
 
 ## 7 - Realizar análisis de la eficiencia del modelo de clasificación usando una matriz de confusión.
 ```{r}
@@ -273,7 +268,7 @@ confusionMatrix(train_prediction, as.factor(train_set$economy))
 ```{r}
 confusionMatrix(test_prediction, as.factor(test_set$economy))
 ```
-
+Para la matriz de confusión de entrenamiento se obtuvo una eficiencia aceptable mientras que para el conjunto de prueba la eficiencia disminuypo levemente.
 
 
 ## 8 - Analizar el modelo ¿cree que pueda estar sobre ajustado?
